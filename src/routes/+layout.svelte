@@ -1,13 +1,16 @@
-<script>
+<script lang="ts">
 	import './styles.css';
-	import { applyPolyfills, defineCustomElements } from '@bee-q/core/dist/loader';
+
+	// @ts-expect-error loaders not working properly
+	import { applyPolyfills, defineCustomElements } from '@bee-q/core/dist/loader/index.cjs';
 
 	let ready = false;
 
-	applyPolyfills().then(() => {
+	void (async function load(): Promise<void> {
+		await applyPolyfills();
 		defineCustomElements();
 		ready = true;
-	});
+	})();
 </script>
 
 {#if ready}
