@@ -10,6 +10,7 @@ jobs:
   steps:
     - name: Checkout
     uses: actions/checkout@v3
+
     - name: Install Node.js
     uses: actions/setup-node@v3
     with:
@@ -21,7 +22,7 @@ jobs:
 
     - name: build
     env:
-      BASE_PATH: '/svelte-bq'
+      BASE_PATH: '/your-repo-name'
     run: |
       npm run build
       touch build/.nojekyll
